@@ -28,7 +28,7 @@ export class QWeatherService {
     url: string
   ): Promise<T | null> {
     try {
-      console.log(`🌐 QWeather API Request: ${url}`)
+      console.error(`🌐 QWeather API Request: ${url}`)
 
       const response = await fetch(url, {
         headers: {
@@ -37,7 +37,7 @@ export class QWeatherService {
         },
       })
 
-      console.log(
+      console.error(
         `📡 Response Status: ${response.status} ${response.statusText}`
       )
 
@@ -48,11 +48,11 @@ export class QWeatherService {
       const data = (await response.json()) as T
 
       // 打印响应基本信息
-      console.log(`📊 Response Code: ${data.code}`)
+      console.error(`📊 Response Code: ${data.code}`)
       if (data.code === '200') {
-        console.log(`✅ API Request Successful`)
+        console.error(`✅ API Request Successful`)
       } else {
-        console.log(`❌ API Request Failed: ${data.code}`)
+        console.error(`❌ API Request Failed: ${data.code}`)
       }
 
       // 和风天气 API 返回格式检查
