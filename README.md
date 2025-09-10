@@ -84,7 +84,33 @@ cp .env.example .env
 npm run build
 ```
 
-### 4. 运行服务器
+### 4. MCP 配置
+
+在 Claude Desktop 的配置文件中添加以下配置：
+
+```json
+{
+  "mcpServers": {
+    "qweather": {
+      "command": "node",
+      "args": ["your-project-path/build/index.js"],
+      "env": {
+        "QWEATHER_API_KEY": "your-api-key-here",
+        "QWEATHER_API_BASE": "your-api-base-url",
+        "QWEATHER_GEO_API": "your-geo-api-url"
+      }
+    }
+  }
+}
+```
+
+**注意：**
+
+- 请将 `your-api-key-here` 替换为您的实际 API Key
+- 根据您的 Node.js 安装路径调整 `command` 字段
+- 根据您的项目路径调整 `args` 中的路径
+
+### 5. 运行服务器
 
 ```bash
 node build/index.js
